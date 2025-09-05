@@ -1,10 +1,11 @@
-
-# 🤓 Orchestrator: A multi-agent AI coder. Now #12 on Stanford's TerminalBench. Open sourced!
+# 🤓 Orchestrator: A multi-agent AI coder. Reached #13 on Stanford's TerminalBench. Open sourced!
 
 TL;DR:
-- Over the weekend, quite unexpectedly, I made a multi-agent AI system that places slightly higher than Claude Code on Stanford's TerminalBench leaderboard (12th place).
+- Over the weekend, quite unexpectedly, I made a multi-agent AI system that places slightly higher than Claude Code on Stanford's TerminalBench leaderboard (13th place).
 - This AI system consists of an orchestration agent that dispatches multiple explorer and coder agents to do all the work.
 - The orchestrator explicitly defines what knowledge artifacts subagents must return, then reuses and synthesises these artifacts across future tasks - creating compound intelligence where each action builds meaningfully on previous discoveries.
+
+![Orchestrator with claude-sonnet-4 on standford's terminal bench](./readme_imgs/orchestrator-sonnet-4-stanford-terminal-bench-leaderboard.png)
 
 ## How the System Works
 
@@ -27,11 +28,14 @@ For a full breakdown of this project's code structure, see [here](./PROJECT_STRU
 
 ### Performance on TerminalBench
 
-[Terminal bench](https://www.tbench.ai/) is a brilliant benchmark created by Stanford and [Laude Institute](https://www.laude.org/) to quantify agents' ability to complete complex tasks in the terminal. My Orchestrator system achieved **12th place** on the leaderboard, demonstrating competitive performance against leading AI coding assistants.
+[Terminal bench](https://www.tbench.ai/) is a brilliant benchmark created by Stanford and [Laude Institute](https://www.laude.org/) to quantify agents' ability to complete complex tasks in the terminal. My Orchestrator system achieved **13th place** on the leaderboard, demonstrating competitive performance against leading AI coding assistants.
 
 I ran the Orchestrator evaluations with both Claude-4-Sonnet and also Qwen3-Coder-480B-A35B:
 
 ![Performance comparison chart](readme_imgs/perf_chart.png)
+![Orchestrator with qwen-3-coder on standford's terminal bench](./readme_imgs/orchestrator-qwen-3-coder-stanford-terminal-bench-leaderboard.png)
+
+This image shows Qwen-3-Coder performance on the benchmark. The screenshot towards the top of this README shows Sonnet-4 performance.
 
 ### Cost & Efficiency
 
@@ -146,3 +150,6 @@ To run evals:
 ```
 
 To quickly test various models: See [/tests](./tests/)
+
+## Notes
+- When I originally ran the evaluations, I saw my result would place me in 12th. By the time of submission (24 hours later), my agent placed 13th. Just 48 hours after this, my agent dropped to 15th! Such is the fascinating rate of progress in AI.
