@@ -153,3 +153,11 @@ To quickly test various models: See [/tests](./tests/)
 
 ## Notes
 - When I originally ran the evaluations, I saw my result would place me in 12th. By the time of submission (24 hours later), my agent placed 13th. Just 48 hours after this, my agent dropped to 15th! Such is the fascinating rate of progress in AI.
+
+## Acknowledgements
+- Thank you to [Taras](https://taras.com/) for supporting the compute costs of my experiments
+- Thank you to all the amazing teams at Anthropic that enabled me to leverage Claude-4-Sonnet, which is such an incredible model
+- Likewise to the Qwen team for releasing Qwen3-Coder to the world, completely open source
+- Thank you to the Claude Code team for inspiring my agentic tool use implementation and philosophy
+- Thank you to the Litellm team for such an simple to use package, allowing me to switch providers with ease
+- Thank you to OpenRouter for such a great routing service, allowing me to switch models with ease
