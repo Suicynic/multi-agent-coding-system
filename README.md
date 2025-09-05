@@ -45,8 +45,8 @@ The below table shows the total tokens (input and output included) processed acr
 
 | Model | Success Rate | Total Evaluation Cost | Token Usage |
 |-------|--------------|------------|-------------|
-| **Claude Sonnet-4** | 36.0% | $263.56* | 93.2M tokens |
-| **Qwen-3-Coder** | 19.25% | $217.83 | 14.7M tokens |
+| **Claude Sonnet-4** | 37.0% | $263.56* | 93.2M tokens |
+| **Qwen-3-Coder** | 19.7% | $217.83 | 14.7M tokens |
 
 *Claude Sonnet-4 costs reflect heavy caching usage, reducing actual API costs
 
