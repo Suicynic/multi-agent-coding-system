@@ -1,7 +1,7 @@
 """Action definitions using Pydantic for automatic YAML validation."""
 
 from typing import List, Optional, Literal
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class Action(BaseModel):
@@ -46,6 +46,14 @@ class TodoOperation(BaseModel):
             if v is None or v < 1:
                 raise ValueError(f"'{action}' action requires positive task_id")
         return v
+    
+    @model_validator(mode='after')
+    def check_required_fields(self):
+        if self.action == 'add' and not self.content:
+            raise ValueError("'add' action requires 'content'")
+        if self.action in ['complete', 'delete'] and (self.task_id is None or self.task_id < 1):
+            raise ValueError(f"'{self.action}' action requires positive task_id")
+        return self
 
 
 class BatchTodoAction(Action):
@@ -128,7 +136,7 @@ class ViewAllNotesAction(Action):
 # Task Management Actions
 class TaskCreateAction(Action):
     """Create a new task."""
-    agent_type: Literal["exploratory", "coder"]
+    agent_type: Literal["explorer", "coder"]
     title: str = Field(..., min_length=1)
     description: str = Field(..., min_length=1)
     context_refs: List[str] = Field(default_factory=list)
