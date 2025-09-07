@@ -207,7 +207,7 @@ action: view_all_notes
         """Test parsing of task management operations."""
         # Task create
         xml = """<task_create>
-agent_type: exploratory
+agent_type: explorer
 title: "Analyze codebase structure"
 description: "Perform a comprehensive analysis of the codebase"
 context_refs:
@@ -224,7 +224,7 @@ auto_launch: true
         actions, errors, found = self.parser.parse_response(xml)
         assert len(actions) == 1
         assert isinstance(actions[0], TaskCreateAction)
-        assert actions[0].agent_type == "exploratory"
+        assert actions[0].agent_type == "explorer"
         assert actions[0].title == "Analyze codebase structure"
         assert len(actions[0].context_refs) == 2
         assert len(actions[0].context_bootstrap) == 2
