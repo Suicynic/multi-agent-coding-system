@@ -7,7 +7,7 @@
 set -e  # Exit on any error
 
 echo "🤖 Installing Orchestrator Multi-Agent Coding System"
-echo "=" * 60
+printf '=%.0s' {1..60}; echo
 
 # Function to check if command exists
 command_exists() {
