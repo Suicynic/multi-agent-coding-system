@@ -1,10 +1,7 @@
 #!/bin/bash
-"""
-Setup examples for using the Orchestrator system.
-
-This script provides example commands for different scenarios.
-"""
-
+# Setup examples for using the Orchestrator system.
+#
+# This script provides example commands for different scenarios.
 echo "🤖 Orchestrator Multi-Agent Coding System - Usage Examples"
 printf '=%.0s' {1..60}; echo
 
