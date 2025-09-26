@@ -139,17 +139,51 @@ One thing I noticed during early evaluations was that whilst the system was on t
 
 ## Getting started
 
-For dev:
+### For TerminalBench Evaluation
 ```bash
 uv sync
-```
-
-To run evals:
-```bash
 ./run_terminal_bench_eval.sh
 ```
 
-To quickly test various models: See [/tests](./tests/)
+### For Using on Your Own Repositories
+
+**Quick Start:**
+```bash
+# Set your API key
+export LITELLM_API_KEY="your-api-key-here"
+
+# Use the orchestrator on any repository
+python orchestrator_cli.py "Add unit tests for the authentication module"
+
+# Work on a different directory
+python orchestrator_cli.py "Fix bugs in payment processing" --directory /path/to/your/project
+
+# Use a different model
+python orchestrator_cli.py "Add documentation" --model "openai/gpt-4"
+```
+
+**Repository Analysis:**
+```bash
+# Analyze your repository to understand what the orchestrator can help with
+python repo_analyzer.py
+
+# Get task suggestions based on your codebase
+python repo_analyzer.py /path/to/your/project
+```
+
+**Configuration:**
+```bash
+# Create a configuration file for your preferences
+python orchestrator_config.py --create-sample
+
+# View current settings
+python orchestrator_cli.py --show-config
+```
+
+For detailed usage instructions, examples, and troubleshooting, see **[USAGE.md](./USAGE.md)**.
+
+### Testing Various Models
+See [/tests](./tests/) for testing different models on simple tasks.
 
 ## Notes
 - When I originally ran the evaluations, I saw my result would place me in 12th. By the time of submission (24 hours later), my agent placed 13th. Just 48 hours after this, my agent dropped to 15th! Such is the fascinating rate of progress in AI.

@@ -87,3 +87,56 @@ class TmuxExecutor(CommandExecutor):
             self.session.send_keys([cmd, "Enter"], block=False, min_timeout_sec=0.1)
         except Exception:
             pass
+
+
+class LocalExecutor(CommandExecutor):
+    """Execute commands directly on the local filesystem."""
+    
+    def __init__(self, working_directory: str = None):
+        """Initialize with optional working directory.
+        
+        Args:
+            working_directory: Directory to execute commands in. If None, uses current directory.
+        """
+        self.working_directory = working_directory
+    
+    def execute(self, cmd: str, timeout: int = 30) -> Tuple[str, int]:
+        """Execute a command locally and return (output, return_code)."""
+        try:
+            proc = subprocess.Popen(
+                cmd,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=self.working_directory,
+                text=True
+            )
+            
+            try:
+                stdout, _ = proc.communicate(timeout=timeout)
+                exit_code = proc.returncode or 0
+                return stdout, exit_code
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                return f"Command timed out after {timeout} seconds", 124
+            
+        except Exception as e:
+            return f"Error executing command: {str(e)}", 1
+    
+    def execute_background(self, cmd: str) -> None:
+        """Execute a command in background locally."""
+        try:
+            # For background commands, add '&' if not present
+            if not cmd.strip().endswith('&'):
+                cmd = f"{cmd} &"
+            
+            subprocess.Popen(
+                cmd,
+                shell=True,
+                cwd=self.working_directory,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+        except Exception:
+            # Background execution failures are silently ignored
+            pass
