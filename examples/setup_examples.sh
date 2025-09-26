@@ -6,7 +6,7 @@ This script provides example commands for different scenarios.
 """
 
 echo "🤖 Orchestrator Multi-Agent Coding System - Usage Examples"
-echo "=" * 60
+printf '=%.0s' {1..60}; echo
 
 echo "
 📋 Basic Usage Examples:
