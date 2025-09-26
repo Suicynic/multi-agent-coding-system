@@ -4,6 +4,7 @@ TL;DR:
 - Over the weekend, quite unexpectedly, I made a multi-agent AI system that places slightly higher than Claude Code on Stanford's TerminalBench leaderboard (13th place).
 - This AI system consists of an orchestration agent that dispatches multiple explorer and coder agents to do all the work.
 - The orchestrator explicitly defines what knowledge artifacts subagents must return, then reuses and synthesises these artifacts across future tasks - creating compound intelligence where each action builds meaningfully on previous discoveries.
+- **🆕 NEW: You can now use this system on your own repositories!** See the [Getting Started](#getting-started) section below.
 
 ![Orchestrator with claude-sonnet-4 on standford's terminal bench](./readme_imgs/orchestrator-sonnet-4-stanford-terminal-bench-leaderboard.png)
 
@@ -139,51 +140,70 @@ One thing I noticed during early evaluations was that whilst the system was on t
 
 ## Getting started
 
-### For TerminalBench Evaluation
+### 🚀 Quick Start - Use on Your Own Repositories
+
+**Installation:**
+```bash
+# Clone the repository
+git clone https://github.com/Suicynic/multi-agent-coding-system.git
+cd multi-agent-coding-system
+
+# Run the installer
+bash install.sh
+
+# Set your API key
+export LITELLM_API_KEY="your-api-key-here"
+```
+
+**Usage:**
+```bash
+# Analyze your repository to see what the orchestrator can help with
+python3 repo_analyzer.py
+
+# Use the orchestrator on any task
+python3 orchestrator_cli.py "Add comprehensive unit tests for the authentication module"
+
+# Work on a different directory
+python3 orchestrator_cli.py "Fix bugs in payment processing" --directory /path/to/your/project
+
+# Use a different model
+python3 orchestrator_cli.py "Add documentation" --model "openai/gpt-4"
+```
+
+**What you can do:**
+- 🧪 **Add comprehensive test suites** with proper coverage and mocking
+- 📚 **Generate documentation** with examples and API references  
+- 🐛 **Fix bugs and issues** with intelligent debugging and analysis
+- ✨ **Add new features** with proper planning and implementation
+- 🔧 **Refactor code** for better maintainability and performance
+- 🔒 **Improve security** with vulnerability fixes and best practices
+- 🎨 **Enhance code quality** with linting, formatting, and best practices
+
+For detailed usage, examples, and troubleshooting, see **[USAGE.md](./USAGE.md)**.
+
+### 📊 For TerminalBench Evaluation
 ```bash
 uv sync
 ./run_terminal_bench_eval.sh
 ```
 
-### For Using on Your Own Repositories
-
-**Quick Start:**
+### 📊 For TerminalBench Evaluation
 ```bash
-# Set your API key
-export LITELLM_API_KEY="your-api-key-here"
-
-# Use the orchestrator on any repository
-python orchestrator_cli.py "Add unit tests for the authentication module"
-
-# Work on a different directory
-python orchestrator_cli.py "Fix bugs in payment processing" --directory /path/to/your/project
-
-# Use a different model
-python orchestrator_cli.py "Add documentation" --model "openai/gpt-4"
+uv sync
+./run_terminal_bench_eval.sh
 ```
 
-**Repository Analysis:**
-```bash
-# Analyze your repository to understand what the orchestrator can help with
-python repo_analyzer.py
-
-# Get task suggestions based on your codebase
-python repo_analyzer.py /path/to/your/project
-```
-
-**Configuration:**
-```bash
-# Create a configuration file for your preferences
-python orchestrator_config.py --create-sample
-
-# View current settings
-python orchestrator_cli.py --show-config
-```
-
-For detailed usage instructions, examples, and troubleshooting, see **[USAGE.md](./USAGE.md)**.
-
-### Testing Various Models
+### 🔬 Testing Various Models
 See [/tests](./tests/) for testing different models on simple tasks.
+
+### 📁 Repository Structure
+- **`orchestrator_cli.py`** - Main CLI interface for using on any repository
+- **`repo_analyzer.py`** - Tool to analyze repositories and suggest tasks  
+- **`orchestrator_config.py`** - Configuration management system
+- **`USAGE.md`** - Comprehensive usage guide with examples
+- **`examples/`** - Usage examples for different programming languages
+- **`src/`** - Core orchestrator and agent implementation
+- **`tests/`** - Test suite and model evaluation scripts
 
 ## Notes
 - When I originally ran the evaluations, I saw my result would place me in 12th. By the time of submission (24 hours later), my agent placed 13th. Just 48 hours after this, my agent dropped to 15th! Such is the fascinating rate of progress in AI.
