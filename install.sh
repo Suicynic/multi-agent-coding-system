@@ -1,9 +1,8 @@
 #!/bin/bash
-"""
-Installation script for the Orchestrator Multi-Agent Coding System.
-
-This script helps users set up the system for use on their own repositories.
-"""
+# Installation script for the Orchestrator Multi-Agent Coding System.
+#
+# This script helps users set up the system for use on their own repositories.
+#
 
 set -e  # Exit on any error
 
